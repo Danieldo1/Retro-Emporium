@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Roboto, Unbounded } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
+import Providers from '@/components/Providers'
 
 export const roboto = Roboto({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-roboto' })
 export const unbounded = Unbounded({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-unbounded' })
@@ -20,10 +21,12 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${roboto.variable} ${unbounded.variable} relative h-full antialiased`}>
         <main className="relative flex flex-col min-h-screen">
-          <Nav />
-          <div className="flex-grow flex-1">
-            {children}
-          </div>
+          <Providers>
+            <Nav />
+            <div className="flex-grow flex-1">
+              {children}
+            </div>
+          </Providers>
         </main>
       </body>
     </html>

@@ -7,8 +7,29 @@ import { cn } from "@/lib/utils"
 import { ArrowUpFromDot } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import {useForm} from "react-hook-form"
+import {zodResolver} from "@hookform/resolvers/zod"
+import { AuthValidator, TypeAuthValidator } from "@/lib/validators/accounts"
+
+
 
 const Page = () => {
+
+
+
+const {register, handleSubmit, formState: {errors}} = useForm<TypeAuthValidator>({
+    resolver:  zodResolver(AuthValidator)
+})
+
+const onSubmit = ({email, password}: TypeAuthValidator) => {
+    // Send data to server
+}
+
+
+
+
+
+
     return (
         <>
         <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
@@ -28,17 +49,21 @@ const Page = () => {
 
                 <div className="grid gap-6 ">
                     <form 
-                    // onSubmit={}
+                    onSubmit={handleSubmit(onSubmit)}
                     >
                         <div className="grid gap-2">
                             <div className="grid gap-1 py-2">
                                 <Label htmlFor="email">Email</Label>
-                                <Input id="email" placeholder="your@example.com" type="email" className={cn({"focus-visible:ring-primary": true})}/>
+                                <Input id="email" placeholder="your@example.com" type="email" className={cn({"focus-visible:ring-primary": errors.email})}
+                                {...register("email")}
+                                />
                             </div>
 
                             <div className="grid gap-1 py-2">
                                 <Label htmlFor="password">Password</Label>
-                                <Input  placeholder="Password"  className={cn({"focus-visible:ring-primary": true})}/>
+                                <Input  placeholder="Password"  className={cn({"focus-visible:ring-primary": errors.password})}
+                                {...register("password")}
+                                />
                             </div>
 
                             <Button>Create account</Button>
