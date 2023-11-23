@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import { Roboto,Unbounded } from 'next/font/google'
+import { Roboto, Unbounded } from 'next/font/google'
 import './globals.css'
 
-const roboto = Roboto({ weight: ['400', '700'], subsets: ['latin'] })
-const unbounded = Unbounded({ weight: ['400', '700'], subsets: ['latin'] })
+export const roboto = Roboto({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-roboto' })
+export const unbounded = Unbounded({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-unbounded' })
 
 export const metadata: Metadata = {
   title: 'Retro Emporium',
@@ -16,11 +16,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='h-full '>
-      <body className={`${roboto.className} ${unbounded.className} relative h-full antialiased`}>
-        <main className='relative flex flex-col min-h-screen'>
-          <div className='flex-grow flex-1'>
-          {children}
+    <html lang="en" className="h-full">
+      <body className={`${roboto.variable} ${unbounded.variable} relative h-full antialiased`}>
+        <main className="relative flex flex-col min-h-screen">
+          <div className="flex-grow flex-1">
+            {children}
           </div>
         </main>
       </body>

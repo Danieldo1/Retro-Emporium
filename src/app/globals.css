@@ -5,50 +5,56 @@
 
 @layer base {
   :root {
-    --background: hsla(40, 100%, 97.1%, 1);
-    --foreground: hsla(240, 5.3%, 12.2%, 1);
-    --card: hsla(0, 0%, 100%, 1);
-    --card-foreground: hsla(240, 5.3%, 12.2%, 1);
-    --popover: hsla(0, 0%, 100%, 1);
-    --popover-foreground: hsla(240, 5.3%, 12.2%, 1);
-    --primary: hsla(17.5, 98.3%, 54.5%, 1);
-    --primary-foreground: hsla(60, 9.1%, 97.8%, 1);
-    --secondary: hsla(240, 100%, 67.8%, 1);
-    --secondary-foreground: hsla(240, 5.3%, 12.2%, 1);
-    --muted: hsla(60, 4.8%, 95.9%, 1);
-    --muted-foreground: hsla(25, 5.3%, 44.7%, 1);
-    --accent: hsla(60, 4.8%, 95.9%, 1);
-    --accent-foreground: hsla(240, 5.3%, 12.2%, 1);
-    --destructive: hsla(0, 84.2%, 60.2%, 1);
-    --destructive-foreground: hsla(60, 9.1%, 97.8%, 1);
-    --border: hsla(20, 5.9%, 90%, 1);
-    --input: hsla(20, 5.9%, 90%, 1);
-    --ring: hsla(17.5, 98.3%, 54.5%, 1);
+    --background: 40 100% 96%;
+    --foreground: 240 5.3% 12.2%;
+    --card: 0 0% 100%;
+    --card-foreground: var(--foreground);
+    --popover: var(--card);
+    --popover-foreground: var(--card-foreground);
+    --primary: 17.5 98.3% 54.5%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 240 100% 67.8%;
+    --secondary-foreground: var(--foreground);
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: var(--muted);
+    --accent-foreground: var(--foreground);
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--primary-foreground);
+    --border: 20 5.9% 90%;
+    --input: var(--border);
+    --ring: var(--primary);
     --radius: 1rem;
 }
 
 .dark {
-    --background: hsla(20, 14.3%, 4.1%, 1);
-    --foreground: hsla(60, 9.1%, 97.8%, 1);
-    --card: hsla(20, 14.3%, 4.1%, 1);
-    --card-foreground: hsla(60, 9.1%, 97.8%, 1);
-    --popover: hsla(20, 14.3%, 4.1%, 1);
-    --popover-foreground: hsla(60, 9.1%, 97.8%, 1);
-    --primary: hsla(17.5, 98.3%, 54.5%, 1);
-    --primary-foreground: hsla(60, 9.1%, 97.8%, 1);
-    --secondary: hsla(12, 6.5%, 15.1%, 1);
-    --secondary-foreground: hsla(60, 9.1%, 97.8%, 1);
-    --muted: hsla(12, 6.5%, 15.1%, 1);
-    --muted-foreground: hsla(24, 5.4%, 63.9%, 1);
-    --accent: hsla(12, 6.5%, 15.1%, 1);
-    --accent-foreground: hsla(60, 9.1%, 97.8%, 1);
-    --destructive: hsla(0, 72.2%, 50.6%, 1);
-    --destructive-foreground: hsla(60, 9.1%, 97.8%, 1);
-    --border: hsla(12, 6.5%, 15.1%, 1);
-    --input: hsla(12, 6.5%, 15.1%, 1);
-    --ring: hsla(17.5, 98.3%, 54.5%, 1);
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: var(--background);
+    --card-foreground: var(--foreground);
+    --popover: var(--background);
+    --popover-foreground: var(--foreground);
+    --primary: var(--ring);
+    --primary-foreground: var(--foreground);
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: var(--foreground);
+    --muted: var(--secondary);
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: var(--secondary);
+    --accent-foreground: var(--foreground);
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: var(--primary-foreground);
+    --border: var(--secondary);
+    --input: var(--border);
+    --ring: var(--primary);
 }
 
+.text1{
+  font-family: var(--font-roboto)
+}
+.text2{
+  font-family: var(--font-unbounded)
+}
 }
 
  
