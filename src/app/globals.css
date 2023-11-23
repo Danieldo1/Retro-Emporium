@@ -1,27 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ 
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    --background: hsla(40, 100%, 97.1%, 1);
+    --foreground: hsla(240, 5.3%, 12.2%, 1);
+    --card: hsla(0, 0%, 100%, 1);
+    --card-foreground: hsla(240, 5.3%, 12.2%, 1);
+    --popover: hsla(0, 0%, 100%, 1);
+    --popover-foreground: hsla(240, 5.3%, 12.2%, 1);
+    --primary: hsla(17.5, 98.3%, 54.5%, 1);
+    --primary-foreground: hsla(60, 9.1%, 97.8%, 1);
+    --secondary: hsla(240, 100%, 67.8%, 1);
+    --secondary-foreground: hsla(240, 5.3%, 12.2%, 1);
+    --muted: hsla(60, 4.8%, 95.9%, 1);
+    --muted-foreground: hsla(25, 5.3%, 44.7%, 1);
+    --accent: hsla(60, 4.8%, 95.9%, 1);
+    --accent-foreground: hsla(240, 5.3%, 12.2%, 1);
+    --destructive: hsla(0, 84.2%, 60.2%, 1);
+    --destructive-foreground: hsla(60, 9.1%, 97.8%, 1);
+    --border: hsla(20, 5.9%, 90%, 1);
+    --input: hsla(20, 5.9%, 90%, 1);
+    --ring: hsla(17.5, 98.3%, 54.5%, 1);
+    --radius: 1rem;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.dark {
+    --background: hsla(20, 14.3%, 4.1%, 1);
+    --foreground: hsla(60, 9.1%, 97.8%, 1);
+    --card: hsla(20, 14.3%, 4.1%, 1);
+    --card-foreground: hsla(60, 9.1%, 97.8%, 1);
+    --popover: hsla(20, 14.3%, 4.1%, 1);
+    --popover-foreground: hsla(60, 9.1%, 97.8%, 1);
+    --primary: hsla(17.5, 98.3%, 54.5%, 1);
+    --primary-foreground: hsla(60, 9.1%, 97.8%, 1);
+    --secondary: hsla(12, 6.5%, 15.1%, 1);
+    --secondary-foreground: hsla(60, 9.1%, 97.8%, 1);
+    --muted: hsla(12, 6.5%, 15.1%, 1);
+    --muted-foreground: hsla(24, 5.4%, 63.9%, 1);
+    --accent: hsla(12, 6.5%, 15.1%, 1);
+    --accent-foreground: hsla(60, 9.1%, 97.8%, 1);
+    --destructive: hsla(0, 72.2%, 50.6%, 1);
+    --destructive-foreground: hsla(60, 9.1%, 97.8%, 1);
+    --border: hsla(12, 6.5%, 15.1%, 1);
+    --input: hsla(12, 6.5%, 15.1%, 1);
+    --ring: hsla(17.5, 98.3%, 54.5%, 1);
+}
+
+}
+
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
