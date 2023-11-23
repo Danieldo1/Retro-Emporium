@@ -10,6 +10,7 @@ import Link from "next/link"
 import {useForm} from "react-hook-form"
 import {zodResolver} from "@hookform/resolvers/zod"
 import { AuthValidator, TypeAuthValidator } from "@/lib/validators/accounts"
+import { trpc } from "@/trpc/client"
 
 
 
@@ -20,6 +21,9 @@ const Page = () => {
 const {register, handleSubmit, formState: {errors}} = useForm<TypeAuthValidator>({
     resolver:  zodResolver(AuthValidator)
 })
+
+const {data} = trpc.anyApiRoute.useQuery()
+console.log(data)
 
 const onSubmit = ({email, password}: TypeAuthValidator) => {
     // Send data to server
