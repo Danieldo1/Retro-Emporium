@@ -16,14 +16,15 @@ export const Users: CollectionConfig = {
       read: () => true,
       create: () => true,  
     },
+ 
    
     fields: [
         {
             name: "role",
             required: true,
             defaultValue: "user",
-            // admin:{
-            //     condition: () => false
+            // admin: {
+            //     hidden: ({user}) => user.role !== 'admin', 
             // },
             type: "select",
             options: [
