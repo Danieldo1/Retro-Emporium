@@ -55,6 +55,7 @@ if(isSeller){
 }
 
 router.push('/')
+router.refresh()
 },
 
 onError: (error) => {

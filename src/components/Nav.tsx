@@ -46,7 +46,7 @@ const {user}= await getServerSideUser(nextCookies)
 
                                 {user ? null : <span className='h-6 w-px bg-secondary' aria-hidden="true" />}
 
-                                {user ? <UserNav />: <Link href='/sign-up' className={buttonVariants({ variant: 'ghost' })}>Sign up</Link> }
+                                {user ? <UserNav user={user} />: <Link href='/sign-up' className={buttonVariants({ variant: 'ghost' })}>Sign up</Link> }
 
                                 {user ? <span className='h-6 w-px bg-secondary' aria-hidden="true"/> :null}
 
