@@ -73,3 +73,17 @@
     -webkit-text-stroke-color: rgb(0, 0, 0);
   }
 }
+
+.swiper-pagination-bullet {
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  scale: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  scale: 1.3 !important;
+  background: white !important;
+  color: #fff;
+
+}
