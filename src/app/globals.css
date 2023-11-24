@@ -66,3 +66,10 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  .text-stroke {
+    -webkit-text-fill-color:  transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+  }
+}

@@ -2,6 +2,7 @@ import Wrapper from "@/components/Wrapper";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Gem, TimerIcon, UserCircle2 } from "lucide-react";
+import ProductReel from "@/components/ProductReel";
 
 const features= [
   {
@@ -27,18 +28,28 @@ export default function Home() {
     <>
    <Wrapper>
      <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl ">
-        <h1 className={`text-4xl font-bold text1  tracking-tighter sm:text-6xl`} >Sail through time, shop the retro rhyme: <br /><span className=" font-semibold text2 text-primary">Explore, Experience, Embrace at Retro Emporium</span></h1>
-        <p className="text-muted-foreground"> - Where Nostalgia Meets Modern Elegance!</p>
+     <h1 className={`text-4xl font-bold text2 tracking-tight sm:text-6xl text-primary`}>
+  <span className="">Sail through time, shop the retro rhyme:</span>
+  <br />
+  <span className="font-semibold text1 text-4xl tracking-tight text-secondary  ">
+    Explore, Experience, Embrace 
+  </span>
+  <br />
+  <span className="font-bold text1 text-4xl tracking-widest text-stroke text-secondary uppercase">
+  Retro Emporium
+  </span>
+</h1>
+  
 
         <div className="flex flex-col sm:flex-row gap-4 mt-8 ">
           <Link href={"/products"} className={buttonVariants({ variant: "default" })} >
             Shop Now
           </Link>
-          <Button variant={"ghost"} >Quality products &rarr;</Button>
+          <Button variant={"ghost"} className="text-secondary" >Quality products &rarr;</Button>
         </div>
      </div>
 
-     {/* Add products */}
+    <ProductReel title="Explore Products" href="/products" />
    </Wrapper>
 
    <section className="border-t border-[#c0c4cc] bg-[#f0f5ff]">
