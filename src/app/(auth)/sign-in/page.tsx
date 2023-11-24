@@ -26,37 +26,55 @@ const Page = () => {
 
     const origin = searchParams.get('origin') 
 
+    const continueAsSeller = () => {
+        router.push('?as=seller')
+    }
+
+    const continueAsBuyer = () => {
+        router.replace('/sign-in', undefined)
+    }
+
 
 const {register, handleSubmit, formState: {errors}} = useForm<TypeAuthValidator>({
     resolver:  zodResolver(AuthValidator)
 })
 
-const {mutate,isLoading} = trpc.auth.signIn.useMutation({
-    onError: (error) => {
-        if(error.data?.code === "BAD_REQUEST") {
-            toast.error('Email already exists. Please login')
-            return
-        }
+const {mutate:signIn,isLoading} = trpc.auth.signIn.useMutation({
+onSuccess: () => {
+toast.success('Sign in was a success')
+router.refresh()  
 
-        if(error instanceof ZodError) {
-            toast.error(error.issues[0].message)
-            return
-        }
+if(origin) {
+    router.push(`/${origin}`)
+    return 
+} 
 
-        toast.error('Something went wrong. Please try again later')
-    },
+if(isSeller){
+    router.push('/sell')
+    return 
+}
 
-    onSuccess: ({sentToEmail}) => {
-        toast.success(`We have sent a verification link to ${sentToEmail}. Please check your email inbox.`)
-        router.push('/verify-email?to=' + sentToEmail)
+router.push('/')
+},
+
+onError: (error) => {
+    if(error.data?.code === "BAD_REQUEST" || error.data?.code === "UNAUTHORIZED") {
+        toast.error('Something is wrong :( Please try again later')
+        
     }
+},
+
+
+
 
 
 })
 
+
+
 const onSubmit = ({email, password}: TypeAuthValidator) => {
     // Send data to server
-    mutate({email, password})
+    signIn({email, password})
 }
 
 
@@ -76,7 +94,10 @@ const onSubmit = ({email, password}: TypeAuthValidator) => {
                     width={200}
                     
                     />
-                    <h1 className="text-2xl font-semibold text2">Sign in to your account</h1>
+                    <h1 className="text-2xl font-semibold text2">
+                    Sign in to your {isSeller ? 'seller' : ''}{' '} account
+                    
+                    </h1>
 
                     
                 </div>
@@ -108,7 +129,7 @@ const onSubmit = ({email, password}: TypeAuthValidator) => {
                                 )}
                             </div>
 
-                            <Button>Sign in</Button>
+                            <Button className="text2">Sign in</Button>
                         </div>
                     </form>
 
@@ -118,10 +139,13 @@ const onSubmit = ({email, password}: TypeAuthValidator) => {
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
                             <span className="bg-background px-2 text-muted-foreground">Or continue to</span>
-                        </div>
-                            
-                                    
+                        </div>            
                     </div>
+                    {isSeller ? (
+                        <Button onClick={continueAsBuyer} variant={"secondary"} disabled={isLoading} className="text-white text2" >Sign in as a buyer</Button>
+                    ): (
+                        <Button onClick={continueAsSeller} variant={"secondary"} disabled={isLoading} className="text-white text2">Sign in as a seller</Button>
+                    )}
                 </div>
                     <Link href='/sign-up' className={buttonVariants({ variant: "link" })}>
                         <p className="text-sm text-secondary">Not a member? <span >Sign up here </span></p>

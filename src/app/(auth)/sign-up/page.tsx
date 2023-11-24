@@ -103,7 +103,7 @@ const onSubmit = ({email, password}: TypeAuthValidator) => {
                                 )}
                             </div>
 
-                            <Button>Create account</Button>
+                            <Button className="text2">Create account</Button>
                         </div>
                     </form>
                 </div>
