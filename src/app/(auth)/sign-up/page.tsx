@@ -22,11 +22,13 @@ const {register, handleSubmit, formState: {errors}} = useForm<TypeAuthValidator>
     resolver:  zodResolver(AuthValidator)
 })
 
-const {data} = trpc.anyApiRoute.useQuery()
-console.log(data)
+const {mutate,isLoading} = trpc.auth.createUser.useMutation({
+    
+})
 
 const onSubmit = ({email, password}: TypeAuthValidator) => {
     // Send data to server
+    mutate({email, password})
 }
 
 
@@ -65,7 +67,9 @@ const onSubmit = ({email, password}: TypeAuthValidator) => {
 
                             <div className="grid gap-1 py-2">
                                 <Label htmlFor="password">Password</Label>
-                                <Input  placeholder="Password"  className={cn({"focus-visible:ring-primary": errors.password})}
+                                <Input  placeholder="Password"
+                                type="password"
+                                className={cn({"focus-visible:ring-primary": errors.password})}
                                 {...register("password")}
                                 />
                             </div>
