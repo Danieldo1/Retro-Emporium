@@ -13,20 +13,25 @@ import { AuthValidator, TypeAuthValidator } from "@/lib/validators/accounts"
 import { trpc } from "@/trpc/client"
 import {toast} from 'sonner'
 import { ZodError } from "zod"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 
 
 const Page = () => {
 
     const router = useRouter()
+    const searchParams = useSearchParams()
+
+    const isSeller = searchParams.get('as') === 'seller'
+
+    const origin = searchParams.get('origin') 
 
 
 const {register, handleSubmit, formState: {errors}} = useForm<TypeAuthValidator>({
     resolver:  zodResolver(AuthValidator)
 })
 
-const {mutate,isLoading} = trpc.auth.createUser.useMutation({
+const {mutate,isLoading} = trpc.auth.signIn.useMutation({
     onError: (error) => {
         if(error.data?.code === "BAD_REQUEST") {
             toast.error('Email already exists. Please login')
@@ -71,7 +76,7 @@ const onSubmit = ({email, password}: TypeAuthValidator) => {
                     width={200}
                     
                     />
-                    <h1 className="text-2xl font-semibold text2">Create your account</h1>
+                    <h1 className="text-2xl font-semibold text2">Sign in to your account</h1>
 
                     
                 </div>
@@ -103,13 +108,23 @@ const onSubmit = ({email, password}: TypeAuthValidator) => {
                                 )}
                             </div>
 
-                            <Button>Create account</Button>
+                            <Button>Sign in</Button>
                         </div>
                     </form>
-                </div>
 
-                <Link href='/sign-in' className={buttonVariants({ variant: "link" })}>
-                        <p className="text-sm text-secondary">Already have an account? <span >Sign in here </span></p>
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <span className="w-full border-t"/>
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-background px-2 text-muted-foreground">Or continue to</span>
+                        </div>
+                            
+                                    
+                    </div>
+                </div>
+                    <Link href='/sign-up' className={buttonVariants({ variant: "link" })}>
+                        <p className="text-sm text-secondary">Not a member? <span >Sign up here </span></p>
                         
                     </Link>
 
