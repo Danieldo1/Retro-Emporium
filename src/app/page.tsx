@@ -49,7 +49,7 @@ export default function Home() {
         </div>
      </div>
 
-    <ProductReel title="Explore Products" href="/products" />
+    <ProductReel query={{limit: 4,sort:"desc"}} title="Explore Products" href="/products" />
    </Wrapper>
 
    <section className="border-t border-[#c0c4cc] bg-[#f0f5ff]">
