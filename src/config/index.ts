@@ -8,6 +8,7 @@ export const PROD_CATEGORIES = [
         featured: [
             {
                 name: 'Vintage Apparel',
+
                 href:'#',
                 imageSrc: '/nav/vintage/apparel.jpg',   
                 icon: Shirt
@@ -55,3 +56,5 @@ export const PROD_CATEGORIES = [
         ]
     },
 ]
+
+const categoryName = PROD_CATEGORIES[0].featured[0].name;
