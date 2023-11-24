@@ -3,6 +3,7 @@ import { Roboto, Unbounded } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Providers from '@/components/Providers'
+import { Toaster } from 'sonner'
 
 export const roboto = Roboto({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-roboto' })
 export const unbounded = Unbounded({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-unbounded' })
@@ -28,6 +29,7 @@ export default function RootLayout({
             </div>
           </Providers>
         </main>
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   )

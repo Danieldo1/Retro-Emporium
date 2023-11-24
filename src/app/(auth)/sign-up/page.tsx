@@ -11,11 +11,15 @@ import {useForm} from "react-hook-form"
 import {zodResolver} from "@hookform/resolvers/zod"
 import { AuthValidator, TypeAuthValidator } from "@/lib/validators/accounts"
 import { trpc } from "@/trpc/client"
+import {toast} from 'sonner'
+import { ZodError } from "zod"
+import { useRouter } from "next/navigation"
 
 
 
 const Page = () => {
 
+    const router = useRouter()
 
 
 const {register, handleSubmit, formState: {errors}} = useForm<TypeAuthValidator>({
@@ -23,7 +27,26 @@ const {register, handleSubmit, formState: {errors}} = useForm<TypeAuthValidator>
 })
 
 const {mutate,isLoading} = trpc.auth.createUser.useMutation({
-    
+    onError: (error) => {
+        if(error.data?.code === "BAD_REQUEST") {
+            toast.error('Email already exists. Please login')
+            return
+        }
+
+        if(error instanceof ZodError) {
+            toast.error(error.issues[0].message)
+            return
+        }
+
+        toast.error('Something went wrong. Please try again later')
+    },
+
+    onSuccess: ({sentToEmail}) => {
+        toast.success(`We have sent a verification link to ${sentToEmail}. Please check your email inbox.`)
+        router.push('/verify-email?to=' + sentToEmail)
+    }
+
+
 })
 
 const onSubmit = ({email, password}: TypeAuthValidator) => {
