@@ -2,10 +2,15 @@
 import { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 import { CheckCircleIcon, ShoppingBagIcon } from 'lucide-react'
+import { useCart } from '@/hooks/useCart'
+import { Product } from '@/payload-types'
 
-const AddToCart = () => {
+const AddToCart = ({product}:{product:Product}) => {
 
     const [added, setAdded] = useState<boolean>(false)
+
+    const {addItem} = useCart()
+
 
     useEffect(() => {
        const timeout = setTimeout(() => {
@@ -23,7 +28,7 @@ const AddToCart = () => {
   return (
     <Button size={'lg'} className='w-full text2' onClick={() => {
         setAdded(true)
-
+        addItem(product)
     }} >
         
         {added ? (
