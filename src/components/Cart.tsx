@@ -10,6 +10,7 @@ import { buttonVariants } from "./ui/button"
 import { useCart } from "@/hooks/useCart"
 import CartItem from "./CartItem"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
+import { useEffect, useState } from "react"
 
 
 const Cart = () => {
@@ -17,12 +18,20 @@ const Cart = () => {
     const itemCount = items.length
     const fee = 5.99
     const subTotal = items.reduce((total, {product}) => total + product.price, 0)
+
+    const [isMounted, setIsMounted] = useState<boolean>(false)
+
+    useEffect(() => {
+       setIsMounted(true) 
+    },[])
+
+
   return (
     <Sheet>
         <SheetTrigger className="group -m-2 flex items-center p-2">
             <ShoppingBagIcon aria-hidden="true" className="h-6 w-6 flex-shrink-0 text-primary group-hover:text-primary/75"/>
             <span className="ml-2 text-sm font-medium text-muted-foreground group-hover:text-primary">
-                {itemCount}
+                {isMounted ? itemCount : 0}
             </span>
         </SheetTrigger>
         <SheetContent className="w-full flex flex-col pr-0 sm:max-w-lg bg-white">

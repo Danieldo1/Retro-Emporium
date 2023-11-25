@@ -4,11 +4,14 @@ import { Product } from '@/payload-types'
 import { ImageIcon, XIcon } from 'lucide-react'
 import { PROD_CATEGORIES } from '@/config'
 import { useCart } from '@/hooks/useCart'
+import { formatPrice } from '@/lib/utils'
 
 const CartItem = ({product}:{product:Product}) => {
     const {image} = product.images[0] 
     const label = PROD_CATEGORIES.find(({value})=> value === product.category)?.label
     const {removeItem} = useCart()
+   
+
   return (
     <div className='space-y-3 py-2'>
         <div className='flex items-start justify-between gap-4'>
@@ -41,6 +44,13 @@ const CartItem = ({product}:{product:Product}) => {
                         </button>
                     </div>
                 </div>
+            </div>
+
+
+            <div className='flex flex-col space-y-1 font-semibold'>
+                <span className='ml-auto line-clamp-1 text-sm'>
+                    {formatPrice(product.price)}
+                </span>
             </div>
         </div>    
     </div>
