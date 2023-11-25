@@ -34,7 +34,7 @@ export const paymentRouter = router({
             data: {
                 _isPaid: false, 
                 user: user.id,
-                products: filterProducts,
+                products: filterProducts.map(product => product.id),
             }
         })
 

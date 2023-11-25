@@ -8,9 +8,26 @@ import { PROD_CATEGORIES } from '@/config'
 import { CheckIcon, ImageIcon, Loader2Icon, XIcon } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { trpc } from '@/trpc/client'
+import { useRouter } from 'next/navigation'
 
 const Cart = () => {
     const {items,removeItem} =useCart()
+
+    const router = useRouter()
+
+    const {mutate:createSession, isLoading} = trpc.payment.createSession.useMutation({
+        onSuccess: ({url}) => {
+            if(url) {
+                router.push(url)
+            }
+        }
+
+
+
+    })
+
+    const productId = items.map(({product}) => product.id)
 
     const [isMounted, setIsMounted] = useState<boolean>(false)
 
@@ -128,7 +145,7 @@ const Cart = () => {
                                 <span>Shipping</span>
                             </div>
                             <div className='text-sm font-medium text-foreground'>
-                            {isMounted ? formatPrice(subTotal > 75 ? "Free" : 10) : <Loader2Icon className='w-5 h-5 animate-spin' />}
+                            {isMounted ? formatPrice(subTotal > 75 ? 0 : 10) : <Loader2Icon className='w-5 h-5 animate-spin' />}
                             </div>
                         </div>
 
@@ -143,12 +160,12 @@ const Cart = () => {
 
                     <div className="mt-6">
                         <Button
+                        disabled={isLoading || items.length === 0}
                         className='w-full text2 '
                         size={'lg'}
-                        onClick={() => {
-                            
-                        }}
+                        onClick={() => createSession({productId})}
                         >
+                            {isLoading ? <Loader2Icon className='w-4 h-4 animate-spin mr-1.5' /> : null}
                             Checkout
                         </Button>
                     </div>
