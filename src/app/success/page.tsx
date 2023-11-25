@@ -4,12 +4,13 @@ import { getServerSideUser } from '@/lib/payload'
 import { cookies } from 'next/headers'
 import { getPayloadClient } from '@/getPayload'
 import { notFound, redirect } from 'next/navigation'
-import { Product, ProductFile } from '@/payload-types'
+import { Product, ProductFile, User } from '@/payload-types'
 import { PROD_CATEGORIES } from '@/config'
 import { ArrowDownCircle, ArrowDownIcon } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import PaymentStatus from '@/components/PaymentStatus'
 
 interface PageProps {
     searchParams:{[
@@ -52,7 +53,7 @@ const subTotal = products.reduce((total, product) => {
 },0)
 
   return (
-    <main className='relative lg:min-h-full'>
+    <main className='relative lg:min-h-full bg-background'>
         <div className='hidden lg:block h-80 overflow-hidden lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-12'>
             <Image 
             fill
@@ -144,6 +145,10 @@ const subTotal = products.reduce((total, product) => {
 
                             </div>
                         </div>
+
+                        <PaymentStatus orderEmail={(order.user as User).email} orderId={order.id} isPaid={order._isPaid} />
+
+
 
                         <div className='mt-16 border-t border-gray-200 py-6 text-right'>
                             <Link href={'/products'}>
