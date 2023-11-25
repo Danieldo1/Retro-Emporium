@@ -7,28 +7,36 @@ import { cn, formatPrice } from "@/lib/utils"
 import Link from "next/link"
 import Image from "next/image"
 import { buttonVariants } from "./ui/button"
+import { useCart } from "@/hooks/useCart"
+import CartItem from "./CartItem"
+import { ScrollArea } from "@radix-ui/react-scroll-area"
 
 
 const Cart = () => {
-    const itemCount = 0
-    const fee = 1
+    const {items} =useCart()
+    const itemCount = items.length
+    const fee = 5.99
+    const subTotal = items.reduce((total, {product}) => total + product.price, 0)
   return (
     <Sheet>
         <SheetTrigger className="group -m-2 flex items-center p-2">
             <ShoppingBagIcon aria-hidden="true" className="h-6 w-6 flex-shrink-0 text-primary group-hover:text-primary/75"/>
             <span className="ml-2 text-sm font-medium text-muted-foreground group-hover:text-primary">
-                0
+                {itemCount}
             </span>
         </SheetTrigger>
         <SheetContent className="w-full flex flex-col pr-0 sm:max-w-lg bg-white">
             <SheetHeader className="space-y-2.5 pr-6">
-                <SheetTitle className="text-2xl text2">Cart(0)</SheetTitle>
+                <SheetTitle className="text-2xl text2">Cart({itemCount})</SheetTitle>
             </SheetHeader>
             {itemCount >0 ? (
                 <>
                 <div className="flex w-full flex-col pr-6">
-                    {/* cart logic */}
-                    cart items
+                    <ScrollArea>
+                    {items.map(({product}) => (
+                        <CartItem product={product} key={product.id}  />
+                    ))}
+                    </ScrollArea>
                 </div>
 
                 <div className="space-y-4 pr-6">
@@ -51,7 +59,7 @@ const Cart = () => {
                             <span className="flex-1 ">
                                 Total
                             </span>
-                            <span >Free</span>
+                            <span >{formatPrice(subTotal + fee)}</span>
                         </div>
                     </div>
 
