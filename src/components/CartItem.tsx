@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Product } from '@/payload-types'
-import { ImageIcon, XIcon } from 'lucide-react'
+import { ImageIcon, Trash2, XIcon } from 'lucide-react'
 import { PROD_CATEGORIES } from '@/config'
 import { useCart } from '@/hooks/useCart'
 import { formatPrice } from '@/lib/utils'
@@ -35,16 +35,16 @@ const CartItem = ({product}:{product:Product}) => {
                     <span className='line-clamp-1 text-lg font-bold text1 mb-1'>{product.name}</span>
                     <span className='line-clamp-1 text-xs capitalize text-foreground font-medium mb-1'>{label}</span>
 
-                    <div className='mt-4 text-xs text-foreground'>
-                        <button onClick={() => removeItem(product.id)}
-                        className='flex items-center gap-0.5 text-gray-400 hover:text-gray-800'
-                        >
-                            <XIcon aria-hidden="true" className='w-3 h-3 ' />
-                            Remove
-                        </button>
-                    </div>
                 </div>
             </div>
+                    <div className='mt-1 text-xs ml-auto text-foreground'>
+                        <button onClick={() => removeItem(product.id)}
+                        className='flex justify-center items-center gap-0.5 text-gray-400 hover:text-gray-800'
+                        >
+                            <Trash2 aria-hidden="true" className='w-4 h-4 mb-2' />
+                            {/* Remove */}
+                        </button>
+                    </div>
 
 
             <div className='flex flex-col space-y-1 font-semibold'>

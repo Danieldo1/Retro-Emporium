@@ -25,12 +25,12 @@ export const PROD_CATEGORIES = [
                 imageSrc: '/nav/vintage/toys.jpg',
                 icon: Dices
             },
-            {
-                name: 'Home Decor',
-                href:'#',
-                imageSrc: '/nav/vintage/home.jpg',
-                icon: Home
-            },
+            // {
+            //     name: 'Home Decor',
+            //     href:'#',
+            //     imageSrc: '/nav/vintage/home.jpg',
+            //     icon: Home
+            // },
         ]
     },
     {

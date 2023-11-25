@@ -16,7 +16,7 @@ import { useEffect, useState } from "react"
 const Cart = () => {
     const {items} =useCart()
     const itemCount = items.length
-    const fee = 5.99
+    const fee = 10
     const subTotal = items.reduce((total, {product}) => total + product.price, 0)
 
     const [isMounted, setIsMounted] = useState<boolean>(false)
@@ -50,22 +50,17 @@ const Cart = () => {
 
                 <div className="space-y-4 pr-6">
                     <Separator />
-                    <div className="space-y-1.5 text-sm">
+                    <div className="space-y-2 text-sm">
                         <div className="flex ">
                             <span className="flex-1 ">
                                 Shipping
                             </span>
                             <span >{formatPrice(fee)}</span>
                         </div>
-                        <div className="flex ">
-                            <span className="flex-1 ">
-                                Service Fee
-                            </span>
-                            <span >Free</span>
-                        </div>
-
-                        <div className="flex ">
-                            <span className="flex-1 ">
+                        
+                        <Separator className="" />
+                        <div className="flex my-4 ">
+                            <span className="flex-1 font-bold ">
                                 Total
                             </span>
                             <span >{formatPrice(subTotal + fee)}</span>
@@ -75,7 +70,7 @@ const Cart = () => {
                     <SheetFooter>
                         <SheetTrigger asChild>
                         <Link href='/cart' className={cn(buttonVariants(), 'w-full text-center ')}>
-                            <p className="w-full font-semibold">Checkout</p>
+                            <p className="w-full text2 font-semibold">Checkout</p>
                         </Link>
                         </SheetTrigger>
                     </SheetFooter>

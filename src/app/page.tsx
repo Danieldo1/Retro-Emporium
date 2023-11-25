@@ -27,16 +27,16 @@ export default function Home() {
   return (
     <>
    <Wrapper>
-     <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl ">
+     <div className="py-20 mx-auto text-center flex flex-col items-center  max-w-3xl ">
      <h1 className={`text-4xl font-bold text2 tracking-tight sm:text-6xl text-primary`}>
-  <span className="">Sail through time, shop the retro rhyme:</span>
+  <span className="">Retro Emporium</span>
   <br />
-  <span className="font-semibold text1 text-4xl tracking-tight text-secondary  ">
+  <span className="font-semibold text1 text-4xl tracking-tight text-secondary ">
     Explore, Experience, Embrace 
   </span>
   <br />
-  <span className="font-bold text1 text-4xl tracking-widest text-stroke text-secondary uppercase">
-  Retro Emporium
+  <span className="hidden md:block font-bold text1 text-4xl tracking-widest mt-6 text-stroke text-secondary uppercase">
+  Sail through time, shop the retro rhyme
   </span>
 </h1>
   
@@ -45,7 +45,7 @@ export default function Home() {
           <Link href={"/products"} className={buttonVariants({ variant: "default" })} >
             Shop Now
           </Link>
-          <Button variant={"ghost"} className="text-secondary" >Quality products &rarr;</Button>
+          <Button variant={"ghost"} className="text-secondary" >Explore products &rarr;</Button>
         </div>
      </div>
 
