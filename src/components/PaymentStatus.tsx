@@ -33,7 +33,7 @@ const router = useRouter()
         <div>
             <p className="font-medium text-gray-900">Order Status</p>
 
-          {isPaid ? <p className="text-green-500">Paid in full</p> : <p className="text-red-500">Unpaid waiting for payment'</p>}
+          {isPaid ? <p className="text-green-500">Paid in full</p> : <p className="text-red-500">Unpaid waiting for payment</p>}
         </div>
     </div>
   )

@@ -2,6 +2,7 @@ import { formatPrice } from "../../lib/utils"
 import { Product } from "../../payload-types"
 import {Body, Column, Container, Head, Html,Link,Hr, Img, Preview, Row, Section, Text, render} from "@react-email/components"
 import {format} from "date-fns"
+import * as React from "react"
 
 interface ReceiptEmail {
     email:string
