@@ -9,7 +9,7 @@ exports.PROD_CATEGORIES = [
         featured: [
             {
                 name: 'Vintage Apparel',
-                href: '#',
+                href: '/products?category=vintage_apparel',
                 imageSrc: '/nav/vintage/apparel.jpg',
                 icon: lucide_react_1.Shirt
             },

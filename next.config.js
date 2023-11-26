@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domain: [
+        domains: [
             'localhost',
             'retro-emporium-production.up.railway.app'
         ]
