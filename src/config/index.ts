@@ -9,7 +9,7 @@ export const PROD_CATEGORIES = [
             {
                 name: 'Vintage Apparel',
 
-                href:'#',
+                href:'/products?category=vintage_apparel',
                 imageSrc: '/nav/vintage/apparel.jpg',   
                 icon: Shirt
             },

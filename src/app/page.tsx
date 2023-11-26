@@ -45,7 +45,11 @@ export default function Home() {
           <Link href={"/products"} className={buttonVariants({ variant: "default" })} >
             Shop Now
           </Link>
-          <Button variant={"ghost"} className="text-secondary" >Explore products &rarr;</Button>
+          <Button variant={"ghost"} className="text-secondary "  >
+          <Link href={"/products?sort=desc"}  >
+            Explore products &rarr;
+          </Link>
+            </Button>
         </div>
      </div>
 

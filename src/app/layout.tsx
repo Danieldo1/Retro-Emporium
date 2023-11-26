@@ -4,14 +4,13 @@ import './globals.css'
 import Nav from '@/components/Nav'
 import Providers from '@/components/Providers'
 import { Toaster } from 'sonner'
+import Footer from '@/components/Footer'
+import { constructMetadata } from '@/lib/utils'
 
 export const roboto = Roboto({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-roboto' })
 export const unbounded = Unbounded({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-unbounded' })
 
-export const metadata: Metadata = {
-  title: 'Retro Emporium',
-  description: 'Retro Emporium is an e-commerce platform that takes customers on a nostalgic journey through time. The websites design combines modern functionality with a retro aesthetic.',
-}
+export const metadata = constructMetadata()
 
 export default function RootLayout({
   children,
@@ -27,6 +26,7 @@ export default function RootLayout({
             <div className="flex-grow flex-1">
               {children}
             </div>
+            <Footer />
           </Providers>
         </main>
         <Toaster position="top-right" richColors />

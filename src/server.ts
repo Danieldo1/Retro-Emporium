@@ -9,6 +9,8 @@ import { IncomingMessage } from 'http'
 import { stripeWebhookHandler } from './webhooks'
 import nextBuild from 'next/dist/build'
 import path from 'path'
+import { PayloadRequest } from 'payload/types'
+import { parse } from 'url'
 
 const app = express()
 
@@ -42,6 +44,28 @@ const start = async () => {
         },
     })
 
+    const cartRoute = express.Router()
+
+    cartRoute.use(payload.authenticate)
+
+    cartRoute.get('/', (req, res) => {
+        const request = req as PayloadRequest
+
+        if(!request.user){
+            return res.redirect('/sign-in?origin=/cart')
+        }
+
+        const parsedUrl = parse(req.url, true)
+
+        return nextApp.render(
+            req,
+            res,
+            '/cart',
+            parsedUrl.query
+        )
+    })
+
+    app.use('/cart',cartRoute)
 
     app.use('/api/trpc', trpcExpress.createExpressMiddleware({
         router: appRouter,

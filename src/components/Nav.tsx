@@ -8,6 +8,7 @@ import Cart from './Cart'
 import { getServerSideUser } from '@/lib/payload'
 import { cookies } from 'next/headers'
 import UserNav from './UserNav'
+import MobileNav from './MobileNav'
 
 const Nav = async () => {
 
@@ -21,7 +22,7 @@ const {user}= await getServerSideUser(nextCookies)
             <Wrapper>
                 <div className='border-b  border-[#c0c4cc]'>
                     <div className='flex h-16 items-center'>
-                        {/* mobile nav */}
+                    <MobileNav />
 
 {/* logo img */}
                         <div className='ml-4 flex lg:ml-0'>

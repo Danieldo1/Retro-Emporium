@@ -25,7 +25,7 @@ const UserNav = ({user}:{user:User}) => {
             </div>
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem asChild className="cursor-pointer text-secondary">
+            <DropdownMenuItem asChild className="cursor-pointer text-primary">
 
                     <Link href='/sell'>
                         Seller Dashboard
