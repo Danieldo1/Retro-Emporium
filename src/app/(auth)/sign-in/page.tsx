@@ -4,7 +4,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
-import { ArrowUpFromDot } from "lucide-react"
+import { ArrowUpFromDot, InfoIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import {useForm} from "react-hook-form"
@@ -14,11 +14,16 @@ import { trpc } from "@/trpc/client"
 import {toast} from 'sonner'
 import { ZodError } from "zod"
 import { useRouter, useSearchParams } from "next/navigation"
+import { useState } from "react"
 
 
 
 const Page = () => {
+    const [isClicked, setIsClicked] = useState(false);
 
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -95,10 +100,24 @@ const onSubmit = ({email, password}: TypeAuthValidator) => {
                     width={200}
                     
                     />
-                    <h1 className="text-2xl font-semibold text2">
-                    Sign in to your {isSeller ? 'seller' : ''}{' '} account
+                    <h1 className="text-2xl font-semibold text2 flex-row flex">
                     
+                    Sign in to your {isSeller ? 'seller' : ''}{' '} account 
                     </h1>
+                    <div className="group relative">
+                    <InfoIcon
+                        className={cn('w-6 h-6 animate-ping transition-all text-primary cursor-pointer', {
+                        'text-secondary': isClicked,
+                        })}
+                       onClick={handleClick}
+                    />
+                    {isClicked && (
+                        <div className="absolute top-0 left-0 mt-8 p-2 justify-start bg-white border items-start border-gray-300 rounded-lg shadow-lg ">
+                        <p className="text-sm text-gray-800 whitespace-nowrap font-bold line-clamp-1">Email: <span className="text-muted">test@retro-email.com</span></p>
+                        <p className="text-sm text-gray-800 whitespace-nowrap font-bold line-clamp-1">Password: <span className="text-muted">QWERTY1234</span> </p>
+                        </div>
+                    )}
+                    </div>
 
                     
                 </div>

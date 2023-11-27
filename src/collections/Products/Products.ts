@@ -141,7 +141,7 @@ export const Products:CollectionConfig = {
             name: 'images',
             type: 'array',
             label: 'Product Images',
-            minRows: 2,
+            minRows: 1,
             maxRows: 5,
             required: true,
             labels: {
@@ -168,7 +168,7 @@ export const Products:CollectionConfig = {
             label: "Category",
             type: "select",
             options: PROD_CATEGORIES.map(({label, value}) => ({label, value})),
-            required: true,
+            
         },
         {
             name: "description",

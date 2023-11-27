@@ -16,7 +16,7 @@ import { useEffect, useState } from "react"
 const Cart = () => {
     const {items} =useCart()
     const itemCount = items.length
-    const fee = 10
+    const fee = 2
     const subTotal = items.reduce((total, {product}) => total + product.price, 0)
 
     const [isMounted, setIsMounted] = useState<boolean>(false)
@@ -53,7 +53,7 @@ const Cart = () => {
                     <div className="space-y-2 text-sm">
                         <div className="flex ">
                             <span className="flex-1 ">
-                                Shipping
+                                Service Fee
                             </span>
                             <span >{formatPrice(fee)}</span>
                         </div>

@@ -88,7 +88,8 @@ var getPayloadClient = function (_a) {
                         return [2 /*return*/, cached.client];
                     }
                     if (!cached.promise) {
-                        cached.promise = payload_1.default.init(__assign({ email: {
+                        cached.promise = payload_1.default.init(__assign({ 
+                            email: {
                                 transport: transporter,
                                 fromAddress: 'daniel.speranskiy@gmail.com',
                                 fromName: "Retro Emporium",

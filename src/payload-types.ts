@@ -44,7 +44,7 @@ export interface Product {
     id?: string | null;
   }[];
   name: string;
-  category: 'vintage_apparel' | 'retro_themed ';
+  category: 'pixel-art' | 'nft' | 'fonts';
   description: string;
   price: number;
   product_files: string | ProductFile;

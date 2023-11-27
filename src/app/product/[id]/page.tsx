@@ -53,7 +53,7 @@ const Page = async ({params}:PageProps) => {
     <>
    <div className='flex-1 py-1 bg-foreground  flex justify-center align-middle items-center z-10 relative '>
   <Truck  className='h-5 w-5 flex-shrink-0  text-background' />
-  <p className='ml-2 text-lg text1 text-background font-bold tracking-wider '>Free shipping on orders over €75</p>
+  <p className='ml-2 text-lg text1 text-background font-bold tracking-wider '>Secured Payments, 30 Day Return Policy</p>
 </div>
     <Wrapper className='bg-background relative -pt-10 '>
       <div className="bg-background ">

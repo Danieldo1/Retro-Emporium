@@ -16,7 +16,7 @@ const Footer = () => {
     ]
   return (
     <footer className='bg-white flex-grow-0 '>
-        <Wrapper>
+ 
             <div className='border-t border-gray-200 '>
                 {paths.includes(pathname) ? null : (
                 <div className=' pb-4 pt-4'>
@@ -52,7 +52,7 @@ const Footer = () => {
                 </div>)}
             </div>
 
-            <div className='py-10 md:flex md:items-center md:justify-between'>
+            <div className='py-10 md:px-16 md:flex md:items-center md:justify-between'>
                     <div className='text-center md:text-left'>
                         <p className='text-sm text-muted-foreground'>&copy; {new Date().getFullYear()} All Rights Reserved</p>
                     </div>
@@ -74,7 +74,7 @@ const Footer = () => {
                         </div>
                     </div>
             </div>
-        </Wrapper>
+
     </footer>
   )
 }

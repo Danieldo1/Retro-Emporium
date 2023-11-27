@@ -29,14 +29,13 @@ export default function Home() {
    <Wrapper>
      <div className="py-20 mx-auto text-center flex flex-col items-center  max-w-3xl ">
      <h1 className={`text-4xl font-bold text2 tracking-tight sm:text-6xl text-primary`}>
-  <span className="">Retro Emporium</span>
+  <span className="font-bold text1 text-4xl sm:text-6xl tracking-widest mt-6 text-stroke text-secondary uppercase">Retro </span>Emporium
   <br />
-  <span className="font-semibold text1 text-4xl tracking-tight text-secondary ">
-    Explore, Experience, Embrace 
+  <span className="mt-2 text2 text-4xl tracking-tight text-secondary hidden md:block ">
+  Explore, Experience, Embrace 
   </span>
-  <br />
-  <span className="hidden md:block font-bold text1 text-4xl tracking-widest mt-6 text-stroke text-secondary uppercase">
-  Sail through time, shop the retro rhyme
+  <span className="text-2xl sm:text-4xl">
+  Where Nostalgia Meets Innovation in Retro Digital Art!
   </span>
 </h1>
   

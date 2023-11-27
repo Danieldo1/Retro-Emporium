@@ -35,7 +35,7 @@ const Cart = () => {
        setIsMounted(true)
     },[])
 
-    const fee = 5.99
+    const fee = 2
     const subTotal = items.reduce((total, {product}) => total + product.price, 0)
   return (
     <div className="bg-background">
@@ -142,17 +142,17 @@ const Cart = () => {
                     
                         <div className='flex items-center justify-between border-t border-muted-foreground pt-4'>
                             <div className='flex items-center text-sm text-muted-foreground'>
-                                <span>Shipping</span>
+                                <span>Service Fee</span>
                             </div>
                             <div className='text-sm font-medium text-foreground'>
-                            {isMounted ? formatPrice(subTotal > 75 ? 0 : 10) : <Loader2Icon className='w-5 h-5 animate-spin' />}
+                            {isMounted ? formatPrice(fee) : <Loader2Icon className='w-5 h-5 animate-spin' />}
                             </div>
                         </div>
 
                         <div className="flex items-center justify-between border-t border-muted-foreground pt-4">
                             <p className="text-base text-foreground font-semibold">Order Total</p>
                             <p className="text-sm font-medium text-foreground">
-                                {isMounted ? formatPrice(subTotal + (subTotal > 75 ? 0 : 10)) : <Loader2Icon className='w-5 h-5 animate-spin' />}
+                                {isMounted ? formatPrice(subTotal + (fee)) : <Loader2Icon className='w-5 h-5 animate-spin' />}
                             </p>
                         </div>
                     </div>
