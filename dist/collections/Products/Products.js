@@ -186,7 +186,7 @@ exports.Products = {
             name: 'images',
             type: 'array',
             label: 'Product Images',
-            minRows: 2,
+            minRows: 1,
             maxRows: 5,
             required: true,
             labels: {
@@ -216,7 +216,6 @@ exports.Products = {
                 var label = _a.label, value = _a.value;
                 return ({ label: label, value: value });
             }),
-            required: true,
         },
         {
             name: "description",

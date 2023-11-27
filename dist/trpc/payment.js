@@ -93,7 +93,7 @@ exports.paymentRouter = (0, trpc_1.router)({
                             });
                         });
                         line_items.push({
-                            price: "price_1OGHTAARbebDrvKAI3DeJ10H",
+                            price: "price_1OGzJcARbebDrvKA8ESLsGUB",
                             quantity: 1,
                             adjustable_quantity: {
                                 enabled: false,

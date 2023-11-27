@@ -82,9 +82,9 @@ const MobileNav = () => {
                       {category.featured.map((item) => (
                         <Link
                       href={item.href}
+                        key={item.name}
                       className='mt-3 block font-medium text-gray-900'>
                         <div
-                          key={item.name}
                           className='group relative text-sm'>
                           <div className='relative aspect-square overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75'>
                             <Image

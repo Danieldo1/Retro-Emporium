@@ -131,7 +131,7 @@ const Page = async ({params}:PageProps) => {
         </div>
       </div>
 
-      <ProductReel href='/products' query={{limit: 4, category: product.category}} title={`Similar ${label} Products`} subtitle={`Browse our collection of ${label} just like '${product.name}'`} />
+      <ProductReel href='/products' query={{limit: 4}} title={`Similar ${label} Products`} subtitle={`Browse our collection of ${label} just like '${product.name}'`} />
     </Wrapper>
     </>
   )
